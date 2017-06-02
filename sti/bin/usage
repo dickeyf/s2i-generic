@@ -1,0 +1,11 @@
+#!/bin/bash -e
+cat <<EOF
+This is a S2I image for Makefile based projects:
+To use it, install S2I: https://github.com/openshift/source-to-image
+
+Sample invocation:
+s2i build test/test-app s2i-makefile makefile-app
+
+You can then run the resulting image via:
+docker run -d  makefile-app
+EOF

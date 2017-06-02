@@ -1,0 +1,18 @@
+#!/bin/bash -e
+
+echo "---> Building and installing application from source..."
+cp -rf /tmp/src/* /opt/src/
+
+cd /opt/src
+if [ ! -f "build.sh" ]; then
+    echo "Couldn't find application build script : build.sh.  This S2I requires build.sh to execute the build process."
+    exit 1
+fi
+./build.sh
+
+if [ ! -f "staging/start.sh" ]; then
+    echo "Couldn't find application start script in staging directory.  build.sh must produce that file."
+    exit 2
+fi
+
+cp -rf /opt/src/staging/* /opt/app-root
