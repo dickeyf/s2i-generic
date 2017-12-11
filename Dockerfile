@@ -12,7 +12,8 @@ LABEL io.openshift.s2i.scripts-url=image:///usr/local/sti
 
 COPY ./sti/bin/ /usr/local/sti
 
-RUN mkdir -p /opt/src && chmod -R a+rwX /opt/app-root && \
+RUN yum install -y ncurses-devel uuid-devel libuuid-devel libxml2-devel sqlite-devel bison jansson-devel && \
+    mkdir -p /opt/src && chmod -R a+rwX /opt/app-root && \
     mkdir -p /opt/app-root && chmod -R a+rwX /opt/app-root && \
     chown -R 1001:1001 /opt/app-root && \
     chown -R 1001:1001 /opt/src

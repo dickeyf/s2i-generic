@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 echo "---> Building and installing application from source..."
-cp -rf /tmp/src/* /opt/src/
+cp -a /tmp/src/. /opt/src/
 
 cd /opt/src
 if [ ! -f "build.sh" ]; then
@@ -15,4 +15,4 @@ if [ ! -f "staging/start.sh" ]; then
     exit 2
 fi
 
-cp -rf /opt/src/staging/* /opt/app-root
+cp -a /opt/src/staging/. /opt/app-root
